@@ -5,7 +5,7 @@ const POKEMONS_URL = `${BASE_URL}/pokemons`
 const main = document.querySelector("main")
 
 document.addEventListener("DOMContentLoaded", () => {
-  // When a user loads the page, they should see all trainers, with their current team of Pokemon.
+  
   fetchTrainers();
 });
 
@@ -57,7 +57,6 @@ function renderPokemon(pokemon, ul) {
   ul.appendChild(li)
 }
 
-// Whenever a user hits "Add Pokemon" and they have space on their team, they should get a new Pokemon.
 function addPokemon(event) {
   event.preventDefault()
   const trainerId = parseInt(event.target.parentElement.dataset.id)
@@ -72,7 +71,7 @@ function addPokemon(event) {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
-        //"Accept": "application/json"
+        
       },
       body: JSON.stringify(requiredBody)
     };
@@ -96,6 +95,6 @@ function releasePokemon(event) {
   const pokemonId = parseInt(event.target.dataset.pokemonId)
 
   fetch(`${POKEMONS_URL}/${pokemonId}`, { method: "DELETE" })
-  // remove pokemon <li>
+  
   event.target.parentElement.remove()
 }
